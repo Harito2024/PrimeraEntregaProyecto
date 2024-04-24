@@ -52,7 +52,7 @@ router.put('/products/:pid', async (req, res)=>{
         return res.send('Error al actulizar el producto por ID')
     }
 })
-
+ 
 
 router.delete('/products/:pid', async (req, res)=>{
     const {pid} = req.params
