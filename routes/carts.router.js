@@ -36,7 +36,8 @@ router.get('/carts/:cid', async (req, res)=>{
 })
 
 router.post('/carts/:cid/products/:pdi', async (req, res)=>{
-    const {cid, pid} = req.params
+    const cid = req.params.cid
+    const pid = req.params.pdi
     try {
         await managerCart.addProductToCart(cid, pid)
         res.send('Producto agregado')

@@ -7,7 +7,20 @@ class ProductManager{
         this.products = []
     }
 
-    async addProduct({title, description, price, stock, status, category}){
+    async addProduct(newObjet){
+        let { title, description, price, thumbnail, code, stock, status, category }= newObjet
+
+        if (!title || !description || !price || !thumbnail || !code || !stock || !status || !category ) {
+            console.log('Faltan campos')
+            return
+        }
+
+        const codeFound = await this.products.find((id) => id.code === code)
+        if (codeFound) {
+            console.log('Codigo de Producto repetido')
+            return
+        }
+
         let existingProducts = await this.getProducts()
         let newId = existingProducts.length
         
@@ -16,6 +29,8 @@ class ProductManager{
             title, 
             description,
             price,
+            thumbnail,
+            code,
             stock,
             status, 
             category

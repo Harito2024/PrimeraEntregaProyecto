@@ -32,8 +32,8 @@ router.get('/products/:pid', async (req, res)=>{
 
 router.post('/products', async (req, res)=>{
     try {
-        const {title, description, price, stock, status, category} = req.body
-        const result = await manager.addProduct({title, description, price, stock, status, category})
+        const {title, description, price, thumbnail, code, stock, status, category} = req.body
+        const result = await manager.addProduct({title, description, price, thumbnail, code, stock, status, category})
         res.json(result)
     } catch (error) {
         console.log(error)
